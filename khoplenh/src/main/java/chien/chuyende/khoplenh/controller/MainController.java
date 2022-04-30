@@ -22,16 +22,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
-//    @Autowired
+    @Autowired
     SessionFactory factory;
 
-    @RequestMapping(value ="/welcome", method = RequestMethod.GET)
+    @RequestMapping("")
+    public String index() {
+        return "redirect:/welcome";
+    }
+
+    @RequestMapping(value = "welcome", method = RequestMethod.GET)
     public String welcome(ModelMap model, HttpSession session2) {
         model.addAttribute("lenh", new LenhDat());
         return "main";
     }
-    @RequestMapping(value = "/welcome", method = RequestMethod.POST)
-    public String welcome(ModelMap model, HttpSession session2,@ModelAttribute("lenh") LenhDat lenh) {
+
+    @RequestMapping(value = "welcome", method = RequestMethod.POST)
+    public String welcome(ModelMap model, HttpSession session2, @ModelAttribute("lenh") LenhDat lenh) {
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
         try {
@@ -46,10 +52,9 @@ public class MainController {
             query.setParameter("giadatMB", lenh.getGiadat());
             int exRows = query.executeUpdate();
             t.commit();
-            model.addAttribute("message", "Thành công!		Mã: "+lenh.getMacp()+"		Loại GD: "+lenh.getLoaigd()+"		Số lượng: "+lenh.getSoluong()+"		Giá: "+lenh.getGiadat());
+            model.addAttribute("message", "Thành công!		Mã: " + lenh.getMacp() + "		Loại GD: " + lenh.getLoaigd() + "		Số lượng: " + lenh.getSoluong() + "		Giá: " + lenh.getGiadat());
             model.addAttribute("lenh", new LenhDat());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             t.rollback();
             model.addAttribute("message", "Thất bại!");
         }

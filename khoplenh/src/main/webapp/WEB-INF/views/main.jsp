@@ -36,7 +36,7 @@
     </div>
 </c:if>
 <div class="container">
-    <form:form class="ui large form" action="welcome.htm" method="post"
+    <form:form class="ui large form" action="welcome" method="post"
                modelAttribute="lenh">
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Loại
@@ -86,7 +86,7 @@
         </div>
         <div class="row justify-content-md-center">
             <button class="col-sm-2 btn btn-primary" id="btn" style="right:7px">Mua</button>
-            <a class="col-sm-2 btn btn-secondary" href="welcome.htm" role="button" style="left:7px">Làm lại</a>
+            <a class="col-sm-2 btn btn-secondary" href="welcome" role="button" style="left:7px">Làm lại</a>
         </div>
     </form:form>
 
