@@ -4,19 +4,15 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <html>
 <head>
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- jQuery library -->
 
-    <title>Chứng khoán</title>
+    <title>Đặt lệnh</title>
 </head>
 <style type="text/css">
     html, body {
-        height: 100%;
-
+        height: 90%;
     }
-
     .container {
         height: 100%;
         display: flex;
@@ -36,17 +32,17 @@
     </div>
 </c:if>
 <div class="container">
-    <form:form class="ui large form" action="welcome" method="post"
+    <form:form class="ui large form" action="datlenh" method="post"
                modelAttribute="lenh">
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Loại
+            <label class="col-sm-2 col-form-label">Loại
                 lệnh</label>
             <div class="col-sm-4">
                 <select class="form-control">
                     <option selected value="1">Thông thường</option>
                 </select>
             </div>
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Mua/bán</label>
+            <label class="col-sm-2 col-form-label">Mua/bán</label>
             <div class="col-sm-4">
                 <form:select id="loaigd" path="loaigd" class="form-control" onchange="gdChanged(this)">
                     <form:option value="M" selected="selected">Mua</form:option>
@@ -56,13 +52,13 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Mã
+            <label class="col-sm-2 col-form-label">Mã
                 CK</label>
             <div class="col-sm-4">
                 <form:input class="form-control" path="macp" type="text"
                             name="email" placeholder="Mã chứng khoán" required="required"/>
             </div>
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Lệnh</label>
+            <label class="col-sm-2 col-form-label">Lệnh</label>
             <div class="col-sm-4">
                 <form:select path="loailenh" class="form-control">
                     <form:option value="LO" selected="selected">LO</form:option>
@@ -71,13 +67,13 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Khối
+            <label class="col-sm-2 col-form-label">Khối
                 lượng</label>
             <div class="col-sm-4">
                 <form:input class="form-control" path="soluong" type="number"
                             placeholder="Khối lượng" required="required" min="1"/>
             </div>
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Giá</label>
+            <label class="col-sm-2 col-form-label">Giá</label>
             <div class="col-sm-4">
                 <form:input class="form-control" path="giadat" type="number"
                             placeholder="Giá" required="required" min="0" step="0.01"/>
@@ -86,7 +82,7 @@
         </div>
         <div class="row justify-content-md-center">
             <button class="col-sm-2 btn btn-primary" id="btn" style="right:7px">Mua</button>
-            <a class="col-sm-2 btn btn-secondary" href="welcome" role="button" style="left:7px">Làm lại</a>
+            <a class="col-sm-2 btn btn-secondary" href="datlenh" role="button" style="left:7px">Làm lại</a>
         </div>
     </form:form>
 
