@@ -3,6 +3,7 @@ package chien.chuyende.khoplenh.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import chien.chuyende.khoplenh.model.LenhDat;
 import org.hibernate.Session;
@@ -43,7 +44,7 @@ public class MainController {
         try {
             Query query = session.createSQLQuery("{CALL " +
                     "SP_KHOPLENH_LO(:macp,:Ngay,:LoaiGD,:soluongMB,:giadatMB)}");
-            query.setParameter("macp", lenh.getMacp());
+            query.setParameter("macp", lenh.getMacp().trim().toUpperCase());
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS");
             Date now = new Date();
             System.out.println(dateFormat.format(now));

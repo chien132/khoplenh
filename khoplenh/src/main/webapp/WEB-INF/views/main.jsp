@@ -6,18 +6,18 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <meta charset="utf-8"/>
+    <base href="${pageContext.servletContext.contextPath}/">
+    <link rel="stylesheet" type="text/css" href="resources/semantic/semantic.min.css"/>
     <title>Đặt lệnh</title>
 </head>
-<style type="text/css">
+<style>
     html, body {
         height: 90%;
     }
-    .container {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+
+    .spacer {
+        height: 25%;
     }
 </style>
 <body>
@@ -31,63 +31,100 @@
             ${message}
     </div>
 </c:if>
-<div class="container">
-    <form:form class="ui large form" action="datlenh" method="post"
-               modelAttribute="lenh">
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Loại
-                lệnh</label>
-            <div class="col-sm-4">
-                <select class="form-control">
-                    <option selected value="1">Thông thường</option>
-                </select>
-            </div>
-            <label class="col-sm-2 col-form-label">Mua/bán</label>
-            <div class="col-sm-4">
-                <form:select id="loaigd" path="loaigd" class="form-control" onchange="gdChanged(this)">
-                    <form:option value="M" selected="selected">Mua</form:option>
-                    <form:option value="B">Bán</form:option>
-                </form:select>
+<div class="spacer"></div>
+<div class="ui container" style="background-color: rgba(255,255,255,0.2);">
 
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Mã
-                CK</label>
-            <div class="col-sm-4">
-                <form:input class="form-control" path="macp" type="text"
-                            name="email" placeholder="Mã chứng khoán" required="required"/>
-            </div>
-            <label class="col-sm-2 col-form-label">Lệnh</label>
-            <div class="col-sm-4">
-                <form:select path="loailenh" class="form-control">
-                    <form:option value="LO" selected="selected">LO</form:option>
-                </form:select>
+    <div class="ui grid" style="width: 100%; margin-top: 5px">
 
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Khối
-                lượng</label>
-            <div class="col-sm-4">
-                <form:input class="form-control" path="soluong" type="number"
-                            placeholder="Khối lượng" required="required" min="1"/>
-            </div>
-            <label class="col-sm-2 col-form-label">Giá</label>
-            <div class="col-sm-4">
-                <form:input class="form-control" path="giadat" type="number"
-                            placeholder="Giá" required="required" min="0" step="0.01"/>
+        <div class="ten wide centered column">
 
-            </div>
-        </div>
-        <div class="row justify-content-md-center">
-            <button class="col-sm-2 btn btn-primary" id="btn" style="right:7px">Mua</button>
-            <a class="col-sm-2 btn btn-secondary" href="datlenh" role="button" style="left:7px">Làm lại</a>
-        </div>
-    </form:form>
+            <form:form class="ui large form" action="datlenh" method="post"
+                       modelAttribute="lenh">
+                <div class="ui segment" style="font-size: inherit">
 
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label>Mã CK<b
+                                    style="color: red;">*</b></label>
+                            <div class="ui left input">
+                                <form:input path="macp" id="mackinput"
+                                            type="text" placeholder="Mã chứng khoán" required="true"/>
+                            </div>
+                        </div>
+                        <div class="eight wide field"><label>Loại lệnh</label>
+                            <select>
+                                <option selected value="1">Thông thường</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label>Khối lượng<b
+                                    style="color: red;">*</b></label>
+                            <div class="ui left input">
+                                <form:input class="form-control" path="soluong" type="number"
+                                            placeholder="Khối lượng" required="required" min="1"/>
+                            </div>
+                        </div>
+                        <div class="eight wide field"><label>Lệnh</label>
+                            <form:select path="loailenh" class="form-control">
+                                <form:option value="LO" selected="selected">LO</form:option>
+                            </form:select>
+                        </div>
+                    </div>
+
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label>Giá<b
+                                    style="color: red;">*</b></label>
+                            <div class="ui left input">
+                                <form:input class="form-control" path="giadat" type="number"
+                                            placeholder="Giá" required="required" min="0" step="0.01"/>
+                            </div>
+                        </div>
+                        <div class="eight wide field"><label>Mua/Bán</label>
+                            <form:select id="loaigd" path="loaigd" class="form-control" onchange="gdChanged(this)">
+                                <form:option value="M" selected="selected">Mua</form:option>
+                                <form:option value="B">Bán</form:option>
+                            </form:select>
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="five wide field"></div>
+                        <button type="submit" class="ui fluid large teal submit button two wide field" id="btn">Mua
+                        </button>
+                        <div class="two wide field"></div>
+                        <button type="reset" class="ui fluid large grey button two wide field">Làm <lại></lại></button>
+                    </div>
+                </div>
+            </form:form>
+        </div>
+    </div>
 </div>
-<script type="text/javascript">
+
+<div class="ui tiny modal" id="messagemodal">
+    <div class="header"><i class="info blue icon"></i> Thông báo</div>
+    <div class="content">
+        <h3>${message}</h3>
+    </div>
+    <div class="actions">
+        <div class="ui cancel blue inverted button">OK</div>
+    </div>
+</div>
+
+<script type="text/javascript" src="resources/semantic/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="resources/semantic/semantic.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // - MESSAGES
+        if (${message!=null}&&
+        ${dontshowmessage==null})
+        {
+            $('#messagemodal').modal('show');
+        }
+    });
 
     function gdChanged(obj) {
         var message = document.getElementById('btn');
@@ -98,15 +135,9 @@
             message.innerHTML = "Bán";
         }
     }
+    $('#mackinput').keyup(function () {
+        this.value = this.value.toLocaleUpperCase();
+    });
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 </body>
 </html>
