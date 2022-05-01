@@ -41,6 +41,7 @@ public class MainController {
     public String welcome(ModelMap model, @ModelAttribute("lenh") LenhDat lenh) {
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
+        
         try {
             Query query = session.createSQLQuery("{CALL " +
                     "SP_KHOPLENH_LO(:macp,:Ngay,:LoaiGD,:soluongMB,:giadatMB)}");
