@@ -45,7 +45,7 @@ public class MainController {
             Query query = session.createSQLQuery("{CALL " +
                     "SP_KHOPLENH_LO(:macp,:Ngay,:LoaiGD,:soluongMB,:giadatMB)}");
             query.setParameter("macp", lenh.getMacp().trim().toUpperCase());
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS");
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS");
             Date now = new Date();
             System.out.println(dateFormat.format(now));
             query.setParameter("Ngay", dateFormat.format(now));
@@ -54,7 +54,7 @@ public class MainController {
             query.setParameter("giadatMB", lenh.getGiadat());
             int exRows = query.executeUpdate();
             t.commit();
-            model.addAttribute("message", "Thành công!		Mã: " + lenh.getMacp() + "		Loại GD: " + lenh.getLoaigd() + "		Số lượng: " + lenh.getSoluong() + "		Giá: " + lenh.getGiadat());
+            model.addAttribute("message", "Thành công! \t Mã: " + lenh.getMacp() + " | Loại GD: " + (lenh.getLoaigd().equals("M") ? "Mua" : "Bán") + " | Số lượng: " + lenh.getSoluong() + " | Giá: " + lenh.getGiadat());
             model.addAttribute("lenh", new LenhDat());
         } catch (Exception e) {
             t.rollback();
