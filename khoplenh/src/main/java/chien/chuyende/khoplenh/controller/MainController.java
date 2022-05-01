@@ -46,7 +46,7 @@ public class MainController {
             Query query = session.createSQLQuery("{CALL " +
                     "SP_KHOPLENH_LO(:macp,:Ngay,:LoaiGD,:soluongMB,:giadatMB)}");
             query.setParameter("macp", lenh.getMacp().trim().toUpperCase());
-            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.mmm");
             Date now = new Date();
             System.out.println(dateFormat.format(now));
             query.setParameter("Ngay", dateFormat.format(now));
