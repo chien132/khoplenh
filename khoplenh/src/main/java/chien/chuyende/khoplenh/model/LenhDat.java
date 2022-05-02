@@ -1,44 +1,16 @@
 package chien.chuyende.khoplenh.model;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
-
-@Entity
-@Table(name = "LENHDAT")
 public class LenhDat {
-    @Id
-    @GeneratedValue
-    @Column(name = "ID")
-    private Integer id;
-    @Column(name = "MACP")
+
     private String macp;
-    @Column(name = "NGAYDAT")
     private Timestamp ngaydat;
-    @Column(name = "LOAIGD")
     private String loaigd;
-    @Column(name = "LOAILENH")
     private String loailenh;
-    @Column(name = "SOLUONG")
-    private Integer soluong;
-    @Column(name = "GIADAT")
-    private Float giadat;
-    @Column(name = "TRANGTHAILENH")
-    private String trangthailenh;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private int soluong;
+    private BigDecimal giadat;
 
     public String getMacp() {
         return macp;
@@ -72,28 +44,19 @@ public class LenhDat {
         this.loailenh = loailenh;
     }
 
-    public Integer getSoluong() {
+    public int getSoluong() {
         return soluong;
     }
 
-    public void setSoluong(Integer soluong) {
+    public void setSoluong(int soluong) {
         this.soluong = soluong;
     }
 
-    public Float getGiadat() {
+    public BigDecimal getGiadat() {
         return giadat;
     }
 
-    public void setGiadat(Float giadat) {
+    public void setGiadat(BigDecimal giadat) {
         this.giadat = giadat;
     }
-
-    public String getTrangthailenh() {
-        return trangthailenh;
-    }
-
-    public void setTrangthailenh(String trangthailenh) {
-        this.trangthailenh = trangthailenh;
-    }
-
 }

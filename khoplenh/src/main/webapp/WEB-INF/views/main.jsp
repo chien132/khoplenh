@@ -51,7 +51,7 @@
                     <div class="eight wide field">
                         <label>Mã CK</label>
                         <div class="ui left input">
-                            <form:input path="macp" id="mackinput"
+                            <form:input path="macp" id="mackinput" tabindex="1"
                                         type="text" placeholder="Mã chứng khoán" required="true"/>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                     <div class="eight wide field">
                         <label>Khối lượng</label>
                         <div class="ui left input">
-                            <form:input class="form-control" path="soluong" type="number"
+                            <form:input class="form-control" path="soluong" type="number" tabindex="2"
                                         placeholder="Khối lượng" required="required" min="1"/>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="eight wide field">
                         <label>Giá</label>
                         <div class="ui left input">
-                            <form:input class="form-control" path="giadat" type="number"
+                            <form:input class="form-control" path="giadat" type="number" tabindex="3"
                                         placeholder="Giá" required="required" min="0" step="0.01"/>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="fields">
                     <div class="five wide field"></div>
-                    <button type="submit" class="ui fluid large teal submit button two wide field" id="btn">Mua
+                    <button type="submit" class="ui fluid large teal submit button two wide field" id="btn" tabindex="4">Mua
                     </button>
                     <div class="two wide field"></div>
                     <button type="reset" class="ui fluid large grey button two wide field">Làm lại</button>
