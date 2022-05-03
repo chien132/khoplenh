@@ -12,11 +12,11 @@
     html, body {
         height: 90%;
         /*font-family: "Segoe UI";*/
-        font-size: medium;
+        font-size: large;
     }
 
     .spacer {
-        height: 25%;
+        height: 10%;
     }
 </style>
 <body>
@@ -39,9 +39,9 @@
     </div>
 </div>
 
-<div class="ui grid" style="width: 100%; margin-top: 5px">
+<div class="ui container">
 
-    <div class="six wide centered column">
+    <div class="eight wide column">
 
         <form:form class="ui large form" action="datlenh" method="post"
                    modelAttribute="lenh">
@@ -49,7 +49,7 @@
                 <h2 class="ui big"><i class="signup icon"></i>Đặt lệnh</h2>
                 <div class="fields">
                     <div class="eight wide field">
-                        <label>Mã CK</label>
+                        <label>Mã chứng khoán</label>
                         <div class="ui left input">
                             <form:input path="macp" id="mackinput" tabindex="1"
                                         type="text" placeholder="Mã chứng khoán" required="true"/>
@@ -72,7 +72,9 @@
                     </div>
                     <div class="eight wide field"><label>Lệnh</label>
                         <form:select path="loailenh" class="ui dropdown">
-                            <form:option value="LO" selected="selected">LO</form:option>
+                            <form:option value="LO" selected="selected">LO - Khớp liên tục</form:option>
+                            <form:option value="ATO" disabled="true">ATO - Khớp định kỳ</form:option>
+                            <form:option value="ATC" disabled="true">ATC - Khớp đinh kỳ</form:option>
                         </form:select>
                     </div>
                 </div>
@@ -93,11 +95,14 @@
                     </div>
                 </div>
                 <div class="fields">
-                    <div class="five wide field"></div>
-                    <button type="submit" class="ui fluid large teal submit button two wide field" id="btn" tabindex="4">Mua
+                    <div class="four wide field"></div>
+                    <button type="submit" class="ui fluid large teal submit button three wide field" id="btn"
+                            tabindex="4">Mua
                     </button>
                     <div class="two wide field"></div>
-                    <button type="reset" class="ui fluid large grey button two wide field">Làm lại</button>
+                    <button type="reset" onclick="location.href ='datlenh'"
+                            class="ui fluid large grey button three wide field">Làm lại
+                    </button>
                 </div>
             </div>
         </form:form>
