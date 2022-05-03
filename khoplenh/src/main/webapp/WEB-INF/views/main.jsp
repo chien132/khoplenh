@@ -51,7 +51,7 @@
                     <div class="eight wide field">
                         <label>Mã chứng khoán</label>
                         <div class="ui left input">
-                            <form:input path="macp" id="mackinput" tabindex="1"
+                            <form:input path="macp" id="mackinput" tabindex="1" maxlength="7"
                                         type="text" placeholder="Mã chứng khoán" required="true"/>
                         </div>
                     </div>
