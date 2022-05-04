@@ -52,7 +52,7 @@ public class MainController {
             query.setParameter("LoaiGD", lenh.getLoaigd());
             query.setParameter("soluongMB", lenh.getSoluong());
             query.setParameter("giadatMB", lenh.getGiadat());
-            int exRows = query.executeUpdate();
+            query.executeUpdate();
             t.commit();
             model.addAttribute("message", "Thành công! \t Mã: " + lenh.getMacp() + " | Loại GD: " + (lenh.getLoaigd().equals("M") ? "Mua" : "Bán") + " | Số lượng: " + lenh.getSoluong() + " | Giá: " + lenh.getGiadat());
             model.addAttribute("lenh", new LenhDat());
